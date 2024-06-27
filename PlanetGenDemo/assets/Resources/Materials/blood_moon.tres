@@ -1,0 +1,54 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cai7dmkdl2mfv"]
+
+[ext_resource type="Shader" uid="uid://b0fkp263u4pat" path="res://assets/shaders/blood_moon_shader.tres" id="1_218gs"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x3khf"]
+frequency = 0.0101
+fractal_type = 3
+fractal_octaves = 10
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cn5jd"]
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 5.7
+noise = SubResource("FastNoiseLite_x3khf")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_co5co"]
+frequency = 0.032
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w8x52"]
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 25.9
+noise = SubResource("FastNoiseLite_co5co")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_218gs")
+shader_parameter/ShoreLow = Color(0.717647, 0, 0, 1)
+shader_parameter/HeightMinMax = Vector2(0, 1)
+shader_parameter/OceanLevel = 0.875
+shader_parameter/BodyScale = 1.22
+shader_parameter/ShoreHigh = Color(1, 0.443137, 0.380392, 1)
+shader_parameter/FlatLow = Color(1, 0.313726, 0.333333, 1)
+shader_parameter/FlatHigh = Color(1, 0.443137, 0.380392, 1)
+shader_parameter/SteepLow = Color(1, 0.294118, 0.27451, 1)
+shader_parameter/SteepHigh = Color(1, 0.541176, 0.478431, 1)
+shader_parameter/FlatColBlend = 3.0
+shader_parameter/FlatColBlendNoise = 1.0
+shader_parameter/ShoreHeight = 0.194
+shader_parameter/ShoreBlend = 0.077
+shader_parameter/MaxFlatHeight = 0.0
+shader_parameter/SteepBands = 6.336
+shader_parameter/SteepBandStrength = 0.227
+shader_parameter/SteepnessThreshold = 0.351
+shader_parameter/FlatToSteepBlend = 0.3
+shader_parameter/FlatToSteepNoise = 0.2
+shader_parameter/NoiseScale = 1.0
+shader_parameter/NoiseScale2 = 1.0
+shader_parameter/Glossiness = 0.535
+shader_parameter/Metallic = 0.0
+shader_parameter/NoiseTex = SubResource("NoiseTexture2D_cn5jd")
+shader_parameter/surface_normal_map = SubResource("NoiseTexture2D_w8x52")

@@ -1,0 +1,26 @@
+[gd_resource type="Shader" format=3 uid="uid://bk5hrf1wdpdqj"]
+
+[resource]
+code = "shader_type spatial;
+
+uniform float animation_speed = 0.1;
+uniform float height_multiplier = 0.5;
+uniform float noise_scale = 0.1;
+uniform sampler3D wave_noise1;
+uniform sampler3D wave_noise2;
+uniform sampler2D surface_colors;
+varying float surface_height;
+
+void vertex() {
+	float height = texture(wave_noise1, VERTEX * noise_scale + vec3(TIME) * animation_speed).r;
+	float height2 = texture(wave_noise2, VERTEX * noise_scale - vec3(TIME) * animation_speed).r;
+	VERTEX += (VERTEX * (height + height2) * height_multiplier);
+	surface_height = length(VERTEX);
+}
+
+void fragment() {
+	float t = surface_height;
+	vec3 color = texture(surface_colors, vec2(t,0.0)).rgb;
+	ALBEDO = color;
+}
+"

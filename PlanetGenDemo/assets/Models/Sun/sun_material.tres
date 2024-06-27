@@ -1,0 +1,51 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://d0jo884fwrjah"]
+
+[ext_resource type="Shader" uid="uid://bk5hrf1wdpdqj" path="res://assets/shaders/sun_shader.tres" id="1_84c5h"]
+
+[sub_resource type="Gradient" id="Gradient_j5lyj"]
+offsets = PackedFloat32Array(0, 0.0647668)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.278431, 0.0235294, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_kusd7"]
+gradient = SubResource("Gradient_j5lyj")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vc2v2"]
+noise_type = 3
+frequency = 0.05
+fractal_octaves = 10
+domain_warp_type = 1
+domain_warp_fractal_type = 2
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_0bkys"]
+width = 128
+height = 128
+depth = 128
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_vc2v2")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pcagg"]
+noise_type = 3
+seed = 50
+frequency = 0.05
+fractal_octaves = 10
+domain_warp_type = 1
+domain_warp_fractal_type = 2
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_oifiq"]
+width = 128
+height = 128
+depth = 128
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_pcagg")
+
+[resource]
+render_priority = 2
+shader = ExtResource("1_84c5h")
+shader_parameter/animation_speed = 0.02
+shader_parameter/height_multiplier = 0.05
+shader_parameter/noise_scale = 1.0
+shader_parameter/wave_noise1 = SubResource("NoiseTexture3D_0bkys")
+shader_parameter/wave_noise2 = SubResource("NoiseTexture3D_oifiq")
+shader_parameter/surface_colors = SubResource("GradientTexture1D_kusd7")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsnbkdwcpgfuh"]
+
+[ext_resource type="Script" path="res://scripts/orbit_handler.gd" id="1_3nccw"]
+[ext_resource type="PackedScene" uid="uid://0a5t6aoeufg0" path="res://scenes/blood_moon.tscn" id="1_whxvc"]
+[ext_resource type="PackedScene" uid="uid://dvlvhv6l2xnbi" path="res://scenes/test_rocky.tscn" id="3_523fs"]
+[ext_resource type="PackedScene" uid="uid://bima05uvjv4xa" path="res://scenes/template_body.tscn" id="4_oj76e"]
+[ext_resource type="PackedScene" uid="uid://gmcdsmhgelku" path="res://scenes/Sun.tscn" id="5_tma4n"]
+
+[node name="System" type="Node3D"]
+script = ExtResource("1_3nccw")
+
+[node name="Anchor" type="Node3D" parent="."]
+
+[node name="Blood World" parent="Anchor" instance=ExtResource("1_whxvc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4649.07, 0, 0)
+
+[node name="Anchor 2" type="Node3D" parent="."]
+
+[node name="Rock World" parent="Anchor 2" instance=ExtResource("3_523fs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10599.4, 0, 0)
+
+[node name="Anchor 3" type="Node3D" parent="."]
+
+[node name="Terran World" parent="Anchor 3" instance=ExtResource("4_oj76e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7666.62, 0, 0)
+
+[node name="Anchor 4" type="Node3D" parent="."]
+
+[node name="Sun" parent="Anchor 4" instance=ExtResource("5_tma4n")]

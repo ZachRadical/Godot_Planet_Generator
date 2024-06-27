@@ -1,0 +1,42 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://cu8hq3txvjmnx"]
+
+[ext_resource type="Shader" path="res://assets/shaders/calm_water.gdshader" id="1_le786"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7goko"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6icrt"]
+seamless = true
+as_normal_map = true
+bump_strength = 10.0
+noise = SubResource("FastNoiseLite_7goko")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mn3a0"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7ykoj"]
+seamless = true
+as_normal_map = true
+bump_strength = 10.0
+noise = SubResource("FastNoiseLite_mn3a0")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_le786")
+shader_parameter/albedo = Color(0.25098, 0.541176, 1, 1)
+shader_parameter/albedo_fresnel = Color(1, 1, 1, 1)
+shader_parameter/fresnel_range = 5.0
+shader_parameter/wave_direction1 = Vector3(2, -2, 0)
+shader_parameter/wave_direction2 = Vector3(-2, 2, 0)
+shader_parameter/time_scale = 0.005
+shader_parameter/metallic = 0.855
+shader_parameter/roughness = 0.205
+shader_parameter/uv1_blend_sharpness = 5.515
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = Vector3(2, 2, 2)
+shader_parameter/uv2_offset = null
+shader_parameter/normal_map1 = SubResource("NoiseTexture2D_6icrt")
+shader_parameter/normal_map2 = SubResource("NoiseTexture2D_7ykoj")

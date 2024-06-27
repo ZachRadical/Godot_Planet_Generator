@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clgnwcj73cf8"]
+
+[ext_resource type="ArrayMesh" uid="uid://bjsuurq4pmtnu" path="res://assets/Models/Oceanic/oceanic_mesh.tres" id="1_84s3n"]
+
+[node name="TestOceanic" type="StaticBody3D"]
+
+[node name="Terrain" type="MeshInstance3D" parent="."]
+transform = Transform3D(800, 0, 0, 0, 800, 0, 0, 0, 800, 0, 0, 0)
+mesh = ExtResource("1_84s3n")

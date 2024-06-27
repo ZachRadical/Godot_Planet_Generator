@@ -1,0 +1,59 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cwmycgh0scejm"]
+
+[ext_resource type="Shader" path="res://assets/shaders/terran_shader.gdshader" id="1_3sliu"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_he48v"]
+noise_type = 3
+frequency = 0.0307
+fractal_type = 3
+fractal_octaves = 10
+fractal_gain = 1.0
+fractal_weighted_strength = 1.0
+fractal_ping_pong_strength = 0.76
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xyh0a"]
+seamless = true
+as_normal_map = true
+bump_strength = 8.8
+noise = SubResource("FastNoiseLite_he48v")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_3sliu")
+shader_parameter/ShoreLow = Color(0.737255, 0.870588, 0.494118, 1)
+shader_parameter/HeightMinMax = Vector2(1, 2)
+shader_parameter/OceanLevel = 0.595
+shader_parameter/ShoreHigh = Color(0.737255, 0.870588, 0.494118, 1)
+shader_parameter/FlatLowA = Color(0, 0.423529, 0, 1)
+shader_parameter/FlatHighA = Color(0, 0.701961, 0, 1)
+shader_parameter/FlatLowB = Color(0, 0.423529, 0, 1)
+shader_parameter/FlatHighB = Color(0, 0.701961, 0, 1)
+shader_parameter/SteepLow = Color(0.290196, 0.207843, 0.054902, 1)
+shader_parameter/SteepHigh = Color(0.290196, 0.207843, 0.054902, 1)
+shader_parameter/FlatColBlend = 3.0
+shader_parameter/FlatColBlendNoise = 1.0
+shader_parameter/ShoreHeight = 0.048
+shader_parameter/ShoreBlend = 0.064
+shader_parameter/MaxFlatHeight = 0.039
+shader_parameter/SteepBands = 20.0
+shader_parameter/SteepBandStrength = 1.0
+shader_parameter/SteepnessThreshold = 0.1
+shader_parameter/FlatToSteepBlend = 0.127
+shader_parameter/FlatToSteepNoise = 0.141
+shader_parameter/SnowLongitude = 0.912
+shader_parameter/UseSnowyPoles = 1.0
+shader_parameter/SnowCol = Color(1, 1, 1, 1)
+shader_parameter/SnowBlend = 0.052
+shader_parameter/SnowHighlight = 1.943
+shader_parameter/SnowNoiseA = 5.099
+shader_parameter/SnowNoiseB = 4.0
+shader_parameter/SnowSpecular = 1.0
+shader_parameter/NoiseScale = 10.0
+shader_parameter/NoiseScale2 = 10.0
+shader_parameter/FresnelCol = Color(1, 1, 1, 1)
+shader_parameter/FresnelStrengthNear = 2.0
+shader_parameter/FresnelStrengthFar = 5.0
+shader_parameter/FresnelPow = 2.39
+shader_parameter/Glossiness = 0.5
+shader_parameter/Metallic = 0.0
+shader_parameter/NoiseTex = SubResource("NoiseTexture2D_xyh0a")
